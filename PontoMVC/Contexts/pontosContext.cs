@@ -23,8 +23,8 @@ namespace SistemaDePonto.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DEV6\\SQLEXPRESS; Initial Catalog=sistemaDePontos; user Id=sa; pwd=sa@132;");
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=sistemaDePontos; user Id=SA; pwd=database@132;");
             }
         }
 
@@ -68,8 +68,8 @@ namespace SistemaDePonto.Contexts
 
                 entity.Property(e => e.IdFuncionario).HasColumnName("idFuncionario");
 
-                entity.Property(e => e.Nickname)
-                    .HasColumnName("nickname")
+                entity.Property(e => e.email)
+                    .HasColumnName("email")
                     .HasColumnType("text");
 
                 entity.Property(e => e.Nome)

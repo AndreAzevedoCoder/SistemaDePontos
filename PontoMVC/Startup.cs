@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +25,15 @@ namespace SistemaDePonto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
+             //In-Memory
+          services.AddDistributedMemoryCache();
+          services.AddSession(options => {
+            options.IdleTimeout = TimeSpan.FromMinutes(10);
+          });              
+          // Add framework services.
+          services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +51,8 @@ namespace SistemaDePonto
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCookiePolicy();
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

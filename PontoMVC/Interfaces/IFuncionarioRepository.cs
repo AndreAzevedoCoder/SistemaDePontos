@@ -11,5 +11,6 @@ namespace SistemaDePonto.Interfaces
         public Funcionarios BuscarPorID(int id);
         public void Cadastrar(Funcionarios funcionario);
         public void Login(Funcionarios funcionario);
+        public Funcionarios BuscarPorEmailESenha(string email, string senha);
     }
 }

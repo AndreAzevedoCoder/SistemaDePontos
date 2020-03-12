@@ -24,5 +24,25 @@ namespace SistemaDePonto.Repositories
         {
 
         }
+        /// <summary>
+        /// Busca um usuario por email e senha
+        /// </summary>
+        /// <param name="id">ID do usuário que será buscado</param>
+        /// <returns>Um usuário buscado e um status code 200 - Ok</returns>
+
+        
+        public Funcionarios BuscarPorEmailESenha(string email, string senha)
+        {
+            Funcionarios funcionario = new Funcionarios();
+            List<Funcionarios> listaDeFuncionarios = Listar();
+            foreach(Funcionarios Funcionario in listaDeFuncionarios){
+                if(Funcionario.email == email && Funcionario.Senha == senha){
+                    funcionario = Funcionario;
+                    return Funcionario;
+                }
+            }
+            return funcionario;
+
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace SistemaDePonto.Domain
 
         public int IdFuncionario { get; set; }
         public string Nome { get; set; }
-        public string Nickname { get; set; }
+        public string email { get; set; }
         public string Senha { get; set; }
 
         public virtual ICollection<DiasDeTrabalho> DiasDeTrabalho { get; set; }
