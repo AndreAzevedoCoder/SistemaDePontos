@@ -1,0 +1,14 @@
+dotnet ef dbcontext scaffold "Data Source=DEV6\SQLEXPRESS; Initial Catalog=sistemaDePontos; user Id=sa; pwd=sa@132;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context PontosContext
+
+dotnet tool install -g dotnet-aspnet-codegenerator --version 3.0.0
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.AspNetCore.Identity.UI
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+https://docs.microsoft.com/pt-br/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli
+
+Scaffold-DbContext "Data Source=DESKTOP-GCOFA7F\SQLEXPRESS; Initial Catalog=InLock_Games; user Id=sa; pwd=sa@132;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context InLockContext

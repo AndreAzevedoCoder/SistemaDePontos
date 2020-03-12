@@ -5,9 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PontoMVC.Database;
-using PontoMVC.Database.Interfaces;
-using PontoMVC.Database.Repositories;
 using SistemaDePonto.Models;
 
 namespace SistemaDePonto.Controllers
@@ -23,9 +20,6 @@ namespace SistemaDePonto.Controllers
 
         public IActionResult Index()
         {
-            IFuncionarioRepository _funcionarioRepository = new FuncionarioRepository();
-            Funcionario _funcionario = new Funcionario();
-            _funcionarioRepository.Cadastrar(_funcionario);
             return View();
         }
 

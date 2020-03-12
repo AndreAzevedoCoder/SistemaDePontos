@@ -1,32 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/SistemaDePonto.csproj": {}
+    "C:\\Users\\54094513841\\Desktop\\SistemaDePontos\\PontoMVC\\SistemaDePonto.csproj": {}
   },
   "projects": {
-    "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/SistemaDePonto.csproj": {
+    "C:\\Users\\54094513841\\Desktop\\SistemaDePontos\\PontoMVC\\SistemaDePonto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/SistemaDePonto.csproj",
+        "projectUniqueName": "C:\\Users\\54094513841\\Desktop\\SistemaDePontos\\PontoMVC\\SistemaDePonto.csproj",
         "projectName": "SistemaDePonto",
-        "projectPath": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/SistemaDePonto.csproj",
-        "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/obj/",
+        "projectPath": "C:\\Users\\54094513841\\Desktop\\SistemaDePontos\\PontoMVC\\SistemaDePonto.csproj",
+        "packagesPath": "C:\\Users\\54094513841\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\54094513841\\Desktop\\SistemaDePontos\\PontoMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\54094513841\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp3.0": {
             "projectReferences": {}
           }
         },
@@ -37,8 +39,16 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -58,6 +68,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.1, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -82,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
