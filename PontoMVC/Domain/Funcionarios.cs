@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDePonto.Domain
 {
@@ -11,8 +12,12 @@ namespace SistemaDePonto.Domain
         }
 
         public int IdFuncionario { get; set; }
+        
+        [DataType("varchar2")]
         public string Nome { get; set; }
+        [DataType("varchar2")]
         public string email { get; set; }
+        [DataType("varchar2")]
         public string Senha { get; set; }
 
         public virtual ICollection<DiasDeTrabalho> DiasDeTrabalho { get; set; }

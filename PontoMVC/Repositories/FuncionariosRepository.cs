@@ -5,10 +5,14 @@ using System.Threading.Tasks;
 using SistemaDePonto.Interfaces;
 using SistemaDePonto.Domain;
 using SistemaDePonto.Contexts;
+using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
+
 namespace SistemaDePonto.Repositories
 {
     public class FuncionariosRepository : IFuncionarioRepository
     {
+        private string stringConexao = "Data Source=localhost; Initial Catalog=sistemaDePontos; user Id=SA; pwd=database@132;";
         pontosContext ctx = new pontosContext();
         public List<Funcionarios> Listar(){
             return ctx.Funcionarios.ToList();
@@ -33,15 +37,17 @@ namespace SistemaDePonto.Repositories
         
         public Funcionarios BuscarPorEmailESenha(string email, string senha)
         {
-            Funcionarios funcionario = new Funcionarios();
-            List<Funcionarios> listaDeFuncionarios = Listar();
-            foreach(Funcionarios Funcionario in listaDeFuncionarios){
-                if(Funcionario.email == email && Funcionario.Senha == senha){
-                    funcionario = Funcionario;
-                    return Funcionario;
-                }
-            }
+            Funcionarios funcionario = ctx.Funcionarios.Where(b => b.email ==   email.ToString()).FirstOrDefault();
             return funcionario;
+
+
+            // List<Funcionarios> listaDeFuncionarios = Listar();
+            // foreach(Funcionarios Funcionario in listaDeFuncionarios){
+            //     if(Funcionario.email == email && Funcionario.Senha == senha){
+            //         funcionario = Funcionario;
+            //         return Funcionario;
+            //     }
+            // }
 
         }
     }
