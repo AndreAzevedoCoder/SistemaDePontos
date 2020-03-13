@@ -9,6 +9,8 @@ using SistemaDePonto.Models;
 using SistemaDePonto.Interfaces;
 using SistemaDePonto.Repositories;
 using PontoMVC.Controllers;
+using PontoMVC.ViewModel;
+using Microsoft.AspNetCore.Http;
 
 namespace SistemaDePonto.Controllers
 {
@@ -30,8 +32,22 @@ namespace SistemaDePonto.Controllers
                 case "":
                     return View("erro");
                 default:
-                    return View();
+                    FuncionarioViewModel funcionarioViewModel = new FuncionarioViewModel{
+                        Nome = ObterUsuarioNomeSession(),
+                        DiasDeTrabalho = _funcionarioRepository.ObterDiasDeTrabalho(Int32.Parse(ObterIDUsuarioSession()))
+                    };
+                    return View("Dashboard",funcionarioViewModel);
             }
+        }
+
+        [HttpPost]
+
+        public IActionResult EditarDiaDeTrabalho(IFormCollection form){
+            FuncionarioViewModel funcionarioViewModel = new FuncionarioViewModel{
+                Nome = ObterUsuarioNomeSession(),
+                DiaDeTrabalho = _funcionarioRepository.ObterDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()), Int32.Parse(form["idDia"]))
+            };
+            return View("EditarDiaDeTrabalho",funcionarioViewModel);
         }
 
     }

@@ -8,10 +8,11 @@ using Microsoft.Extensions.Logging;
 using SistemaDePonto.Models;
 using SistemaDePonto.Interfaces;
 using SistemaDePonto.Repositories;
+using PontoMVC.Controllers;
 
 namespace SistemaDePonto.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AbstractController
     {
 
         private readonly ILogger<HomeController> _logger;
@@ -23,7 +24,12 @@ namespace SistemaDePonto.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            switch(ObterUsuarioEmailSession()){
+                case "":
+                    return View();
+                default:
+                    return RedirectToAction("Dashboard","Funcionario");
+            }
         }
 
     }

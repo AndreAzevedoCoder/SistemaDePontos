@@ -12,7 +12,6 @@ namespace SistemaDePonto.Repositories
 {
     public class FuncionariosRepository : IFuncionarioRepository
     {
-        private string stringConexao = "Data Source=localhost; Initial Catalog=sistemaDePontos; user Id=SA; pwd=database@132;";
         pontosContext ctx = new pontosContext();
         public List<Funcionarios> Listar(){
             return ctx.Funcionarios.ToList();
@@ -24,31 +23,26 @@ namespace SistemaDePonto.Repositories
         {
             
         }
-        public void Login(Funcionarios funcionario)
-        {
-
-        }
         /// <summary>
-        /// Busca um usuario por email e senha
+        /// Busca um usuario por email e senha 
         /// </summary>
-        /// <param name="id">ID do usuário que será buscado</param>
-        /// <returns>Um usuário buscado e um status code 200 - Ok</returns>
+        /// <param name="email">email do usuário que será buscado</param>
+        /// <param name="senha">senha do usuário que será buscado</param>
+        /// <returns>Um usuário com os parametros correspondentes</returns>
 
-        
-        public Funcionarios BuscarPorEmailESenha(string email, string senha)
+        public Funcionarios Login(string email, string senha)
         {
-            Funcionarios funcionario = ctx.Funcionarios.Where(b => b.email == email).FirstOrDefault();
-            return funcionario;
+            return ctx.Funcionarios.Where(b => b.Email == email && b.Senha == senha).FirstOrDefault();;
+        }
 
+        public List<DiasDeTrabalho> ObterDiasDeTrabalho(int idFuncionario)
+        {
+            return ctx.DiasDeTrabalho.Where(b => b.IdFuncionario == idFuncionario).ToList();
+        }
 
-            // List<Funcionarios> listaDeFuncionarios = Listar();
-            // foreach(Funcionarios Funcionario in listaDeFuncionarios){
-            //     if(Funcionario.email == email && Funcionario.Senha == senha){
-            //         funcionario = Funcionario;
-            //         return Funcionario;
-            //     }
-            // }
-
+        public DiasDeTrabalho ObterDiaDeTrabalho(int idFuncionario, int idDia)
+        {
+            return ctx.DiasDeTrabalho.Where(b => b.IdFuncionario == idFuncionario && b.IdDia == idDia).FirstOrDefault();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace SistemaDePonto.Domain
         [DataType("varchar2")]
         public string Nome { get; set; }
         [DataType("varchar2")]
-        public string email { get; set; }
+        public string Email { get; set; }
         [DataType("varchar2")]
         public string Senha { get; set; }
 

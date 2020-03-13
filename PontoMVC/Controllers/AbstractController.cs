@@ -7,7 +7,7 @@ namespace PontoMVC.Controllers
     {
         protected const string SESSION_CLIENTE_EMAIL = "cliente_email";
         protected const string SESSION_CLIENTE_NOME = "cliente_nome";
-
+        protected const string SESSION_CLIENTE_ID = "cliente_id";
         protected string ObterUsuarioEmailSession()
         {
             var email = HttpContext.Session.GetString(SESSION_CLIENTE_EMAIL);
@@ -30,6 +30,18 @@ namespace PontoMVC.Controllers
             else
             {
                 return "";
+            }
+        }
+        protected string ObterIDUsuarioSession()
+        {
+            var id = HttpContext.Session.GetString(SESSION_CLIENTE_ID);
+            if (id != null)
+            {
+                return id;
+            } 
+            else
+            {
+                return null;
             }
         }
     }

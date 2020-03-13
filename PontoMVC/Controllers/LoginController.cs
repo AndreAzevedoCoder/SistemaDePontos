@@ -32,11 +32,14 @@ namespace SistemaDePonto.Controllers
             string senha = form["Senha"];
             if(email != "" && senha != "" ){
                 
-                Funcionarios funcionario = _funcionarioRepository.BuscarPorEmailESenha(email,senha);
+                Funcionarios funcionario = _funcionarioRepository.Login(email,senha);
                 if(!String.IsNullOrEmpty(funcionario.Nome)){
                     HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, email);
+                    HttpContext.Session.SetString(SESSION_CLIENTE_NOME, funcionario.Nome);
+                    HttpContext.Session.SetString(SESSION_CLIENTE_ID, funcionario.IdFuncionario.ToString());
                     return RedirectToAction("Dashboard","Funcionario");
                 }
+
             }
             return View("Index");
         }

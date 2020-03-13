@@ -1,1 +1,40 @@
-﻿<p>Logado!</p>
+﻿@model PontoMVC.ViewModel.FuncionarioViewModel
+
+<p>Bem-Vindo! @Model.Nome</p>
+
+@foreach (var diaDeTrabalho in @Model.DiasDeTrabalho)
+{
+    <div class="DiaDeTrabalho">
+        <p>@diaDeTrabalho.IdDia</p>
+
+        @if(diaDeTrabalho.Entrada != null){
+            <p>Entrada: @diaDeTrabalho.Entrada</p>
+        }else{
+            <p>Entrada: Pendente</p>
+        }
+
+
+        @if(diaDeTrabalho.IntervaloEntrada != null){
+            <p>Entrada do Intervalo: @diaDeTrabalho.IntervaloEntrada</p>
+        }else{
+            <p>Entrada do Intervalo: Pendente</p>
+        }
+
+        @if(diaDeTrabalho.IntervaloSaida != null){
+            <p>Saida do Intervalo: @diaDeTrabalho.IntervaloSaida</p>
+        }else{
+            <p>Saida do Intervalo: Pendente</p>
+        }
+
+        @if(diaDeTrabalho.Saida != null){
+            <p>Saida: @diaDeTrabalho.Saida</p>
+        }else{
+            <p>Saida: Saida</p>
+        }
+
+        <form method="POST" action='@Url.Action("EditarDiaDeTrabalho", "Funcionario")'>
+            <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
+            <input class="BotaoNormal" type="submit" value="Editar">
+        </form>
+    </div>
+}

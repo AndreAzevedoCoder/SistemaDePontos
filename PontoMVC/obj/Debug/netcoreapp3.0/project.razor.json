@@ -14364,6 +14364,11 @@
   "RootNamespace": "SistemaDePonto",
   "Documents": [
     {
+      "FilePath": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/Views/Funcionario/EditarDiaDeTrabalho.cshtml",
+      "TargetPath": "Views\\Funcionario\\EditarDiaDeTrabalho.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

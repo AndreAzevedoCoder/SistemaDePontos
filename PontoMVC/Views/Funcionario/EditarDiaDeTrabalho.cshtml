@@ -1,0 +1,30 @@
+@model PontoMVC.ViewModel.FuncionarioViewModel
+
+<div>
+    <p>@Model.DiaDeTrabalho.IdDia</p>
+
+    @if(@Model.DiaDeTrabalho.Entrada != null){
+        <p>Entrada: @Model.@Model.DiaDeTrabalho.Entrada</p>
+    }else{
+        <p>Entrada: Pendente</p>
+    }
+
+    @if(@Model.DiaDeTrabalho.IntervaloEntrada != null){
+        <p>Entrada do Intervalo: @Model.DiaDeTrabalho.IntervaloEntrada</p>
+    }else{
+        <p>Entrada do Intervalo: Pendente</p>
+    }
+
+
+    @if(@Model.DiaDeTrabalho.IntervaloSaida != null){
+        <p>Saida do Intervalo: @Model..DiaDeTrabalho.IntervaloSaida</p>
+    }else{
+        <p>Saida do Intervalo: Pendente</p>
+    }
+
+    @if(@Model.DiaDeTrabalho.Saida != null){
+        <p>Saida: @Model.DiaDeTrabalho.Saida</p>
+    }else{
+        <p>Saida: Saida</p>
+    }
+</div>

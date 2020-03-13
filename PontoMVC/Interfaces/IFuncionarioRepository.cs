@@ -10,7 +10,9 @@ namespace SistemaDePonto.Interfaces
         public List<Funcionarios> Listar();
         public Funcionarios BuscarPorID(int id);
         public void Cadastrar(Funcionarios funcionario);
-        public void Login(Funcionarios funcionario);
-        public Funcionarios BuscarPorEmailESenha(string email, string senha);
+        public Funcionarios Login(string email, string senha);
+        public List<DiasDeTrabalho> ObterDiasDeTrabalho(int idFuncionario);
+        public DiasDeTrabalho ObterDiaDeTrabalho(int idFuncionario, int idDia);
+        
     }
 }

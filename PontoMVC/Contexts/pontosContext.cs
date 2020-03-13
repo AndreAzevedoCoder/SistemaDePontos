@@ -68,7 +68,7 @@ namespace SistemaDePonto.Contexts
 
                 entity.Property(e => e.IdFuncionario).HasColumnName("idFuncionario");
 
-                entity.Property(e => e.email)
+                entity.Property(e => e.Email)
                     .HasColumnName("email")
                     .HasColumnType("nvarchar(255)");
 
