@@ -70,15 +70,15 @@ namespace SistemaDePonto.Contexts
 
                 entity.Property(e => e.email)
                     .HasColumnName("email")
-                    .HasColumnType("text");
+                    .HasColumnType("nvarchar(255)");
 
                 entity.Property(e => e.Nome)
                     .HasColumnName("nome")
-                    .HasColumnType("text");
+                    .HasColumnType("nvarchar(255)");
 
                 entity.Property(e => e.Senha)
                     .HasColumnName("senha")
-                    .HasColumnType("text");
+                    .HasColumnType("nvarchar(255)");
             });
 
             OnModelCreatingPartial(modelBuilder);

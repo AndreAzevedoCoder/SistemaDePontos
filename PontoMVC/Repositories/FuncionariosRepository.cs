@@ -37,7 +37,7 @@ namespace SistemaDePonto.Repositories
         
         public Funcionarios BuscarPorEmailESenha(string email, string senha)
         {
-            Funcionarios funcionario = ctx.Funcionarios.Where(b => b.email ==   email.ToString()).FirstOrDefault();
+            Funcionarios funcionario = ctx.Funcionarios.Where(b => b.email == email).FirstOrDefault();
             return funcionario;
 
 
