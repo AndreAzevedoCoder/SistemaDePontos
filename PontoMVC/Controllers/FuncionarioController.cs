@@ -11,6 +11,7 @@ using SistemaDePonto.Repositories;
 using PontoMVC.Controllers;
 using PontoMVC.ViewModel;
 using Microsoft.AspNetCore.Http;
+using SistemaDePonto.Domain;
 
 namespace SistemaDePonto.Controllers
 {
@@ -30,7 +31,7 @@ namespace SistemaDePonto.Controllers
         {
             switch(ObterUsuarioEmailSession()){
                 case "":
-                    return View("erro");
+                    return RedirectToAction("Index","Home");
                 default:
                     FuncionarioViewModel funcionarioViewModel = new FuncionarioViewModel{
                         Nome = ObterUsuarioNomeSession(),
@@ -41,13 +42,17 @@ namespace SistemaDePonto.Controllers
         }
 
         [HttpPost]
+        public IActionResult EditorDeDiaDeTrabalho(IFormCollection form){
 
-        public IActionResult EditarDiaDeTrabalho(IFormCollection form){
-            FuncionarioViewModel funcionarioViewModel = new FuncionarioViewModel{
-                Nome = ObterUsuarioNomeSession(),
-                DiaDeTrabalho = _funcionarioRepository.ObterDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()), Int32.Parse(form["idDia"]))
+            DiasDeTrabalho dia = _funcionarioRepository.ObterDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()), Int32.Parse(form["idDia"]));
+            DiaDeTrabalhoViewModel diaDeTrabalhoViewModel = new DiaDeTrabalhoViewModel{
+                Entrada = DateTime.Parse(dia.Entrada.ToString()),
+                //IntervaloEntrada = DateTime.Parse(dia.IntervaloEntrada.ToString()),
+                //IntervaloSaida = DateTime.Parse(dia.IntervaloSaida.ToString()),
+                Saida = DateTime.Parse(dia.Saida.ToString())
             };
-            return View("EditarDiaDeTrabalho",funcionarioViewModel);
+            
+            return View("EditorDeDiaDeTrabalho",diaDeTrabalhoViewModel);
         }
 
     }

@@ -1,0 +1,29 @@
+@model PontoMVC.ViewModel.DiaDeTrabalhoViewModel
+
+ <form method="POST" action='@Url.Action("EditarDiaDeTrabalho", "Funcionario")' required>
+        @if(@Model.Entrada != null){
+            <input type="datetime-local" name="Entrada" value="@Model.Entrada.Day" required>
+        }else{
+            <input type="datetime-local" name="Entrada" value="@Model.Entrada" required>
+        }
+
+        @if(@Model.IntervaloEntrada != null){
+            <input type="datetime-local" name="IntervaloEntrada" value="@Model.IntervaloEntrada.Day" required>
+        }else{
+            <input type="datetime-local" name="IntervaloEntrada" value="@Model.IntervaloEntrada" required>
+        }
+
+        @if(@Model.IntervaloSaida != null){
+            <input type="datetime-local" name="IntervaloSaida" value="@Model.IntervaloSaida" required>
+        }else{
+            <input type="datetime-local" name="IntervaloSaida" value="@Model.IntervaloSaida" required>
+        }
+
+        @if(@Model.Saida != null){
+            <input type="datetime-local" name="Saida" value="@Model.Saida" required>
+        }else{
+            <input type="datetime-local" name="Saida" value="@Model.Saida" required>
+        }
+
+        <input value="Enviar" type="submit">
+</form>
