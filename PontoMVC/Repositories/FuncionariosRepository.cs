@@ -47,7 +47,24 @@ namespace SistemaDePonto.Repositories
 
         public void atualizarDiaDeTrabalho(DiasDeTrabalho diaAtualizado){
             DiasDeTrabalho diaAntigo = ctx.DiasDeTrabalho.FirstOrDefault(p => p.IdDia == diaAtualizado.IdDia);
-            diaAntigo = diaAtualizado;
+            Console.WriteLine(diaAntigo.IntervaloEntrada);
+            if(diaAtualizado.Entrada != null){
+                diaAntigo.Entrada = diaAtualizado.Entrada;
+            }
+
+            if(diaAtualizado.IntervaloEntrada != null){
+                diaAntigo.IntervaloEntrada = diaAtualizado.IntervaloEntrada;
+            }
+
+            if(diaAtualizado.IntervaloSaida != null){
+                diaAntigo.IntervaloSaida = diaAtualizado.IntervaloSaida;
+            }
+
+            if(diaAtualizado.Saida != null){
+                diaAntigo.Saida = diaAtualizado.Saida;
+            }
+
+            Console.WriteLine(diaAntigo.IntervaloEntrada);
             ctx.SaveChanges();
         }
 

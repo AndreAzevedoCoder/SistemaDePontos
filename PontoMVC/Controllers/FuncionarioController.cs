@@ -81,19 +81,22 @@ namespace SistemaDePonto.Controllers
         }
 
         DateTime dateTimeParse(string dateTimeLocal){
+            if(dateTimeLocal.Length > 13){
+                int ano = Int32.Parse(dateTimeLocal.Substring(0,4));
 
-            int ano = Int32.Parse(dateTimeLocal.Substring(0,4));
+                int mes = Int32.Parse(dateTimeLocal.Substring(5,2));
 
-            int mes = Int32.Parse(dateTimeLocal.Substring(5,2));
+                int dia = Int32.Parse(dateTimeLocal.Substring(8,2));
 
-            int dia = Int32.Parse(dateTimeLocal.Substring(8,2));
+                int hora = Int32.Parse(dateTimeLocal.Substring(11,2));
 
-            int hora = Int32.Parse(dateTimeLocal.Substring(11,2));
+                int minuto = Int32.Parse(dateTimeLocal.Substring(14,2));
 
-            int minuto = Int32.Parse(dateTimeLocal.Substring(14,2));
-
-            DateTime date = new DateTime(ano, mes, dia, hora, minuto, 0);
-            return date;
+                DateTime date = new DateTime(ano, mes, dia, hora, minuto, 0);
+                return date;
+            }else{
+                return new DateTime();
+            }
         }
     }
 }
