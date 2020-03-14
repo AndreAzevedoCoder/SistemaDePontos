@@ -44,5 +44,12 @@ namespace SistemaDePonto.Repositories
         {
             return ctx.DiasDeTrabalho.Where(b => b.IdFuncionario == idFuncionario && b.IdDia == idDia).FirstOrDefault();
         }
+
+        public void atualizarDiaDeTrabalho(DiasDeTrabalho diaAtualizado){
+            DiasDeTrabalho diaAntigo = ctx.DiasDeTrabalho.FirstOrDefault(p => p.IdDia == diaAtualizado.IdDia);
+            diaAntigo = diaAtualizado;
+            ctx.SaveChanges();
+        }
+
     }
 }

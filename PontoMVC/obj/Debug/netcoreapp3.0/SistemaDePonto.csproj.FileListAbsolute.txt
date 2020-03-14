@@ -125,7 +125,6 @@ C:/Users/54094513841/Desktop/SistemaDePontos/PontoMVC/bin/Debug/netcoreapp3.0/do
 /home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/Microsoft.Extensions.Options.dll
 /home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/Microsoft.Extensions.Primitives.dll
 /home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/Microsoft.Identity.Client.dll
-/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/dotnet-aspnet-codegenerator-design.exe
 /home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/Microsoft.Win32.Registry.dll
 /home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/System.Collections.Immutable.dll
 /home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/bin/Debug/netcoreapp3.0/System.ComponentModel.Annotations.dll

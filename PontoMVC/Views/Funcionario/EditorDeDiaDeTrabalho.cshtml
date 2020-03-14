@@ -1,29 +1,52 @@
 @model PontoMVC.ViewModel.DiaDeTrabalhoViewModel
+@{
+    string Normalizar(int numero){
+        if(numero < 10){
+            return "0"+numero.ToString();
+        }else{
+            return numero.ToString();
+        }
+    }
+    string RetornarStringDateTime(DateTime dateTime){
+        return dateTime.Year.ToString()+"-"+Normalizar(dateTime.Month)+"-"+Normalizar(dateTime.Day)+"T"+Normalizar(dateTime.Hour)+":"+Normalizar(dateTime.Minute);
+    }
+    string entrada = RetornarStringDateTime(@Model.Entrada);
+    string intervaloEntrada = RetornarStringDateTime(@Model.IntervaloEntrada);
+    string intervaloSaida = RetornarStringDateTime(@Model.IntervaloSaida);
+    string saida = RetornarStringDateTime(@Model.Saida);
+}
 
  <form method="POST" action='@Url.Action("EditarDiaDeTrabalho", "Funcionario")' required>
-        @if(@Model.Entrada != null){
-            <input type="datetime-local" name="Entrada" value="@Model.Entrada.Day" required>
-        }else{
-            <input type="datetime-local" name="Entrada" value="@Model.Entrada" required>
-        }
+    <input type="hidden" name="ID" value="@Model.IdDia">
+    <label>Entrada</label>
+    @if(@Model.Entrada != null){
+        <input type="datetime-local" name="Entrada" value="@entrada">
+    }else{
+        
+        <input type="datetime-local" name="Entrada">
+    }
 
-        @if(@Model.IntervaloEntrada != null){
-            <input type="datetime-local" name="IntervaloEntrada" value="@Model.IntervaloEntrada.Day" required>
-        }else{
-            <input type="datetime-local" name="IntervaloEntrada" value="@Model.IntervaloEntrada" required>
-        }
+    <label>Entrada do Intervalo</label>
+    @if(@Model.IntervaloEntrada != null){
+        <input type="datetime-local" name="IntervaloEntrada" value="@intervaloEntrada">
+    }else{
+        <input type="datetime-local" name="IntervaloEntrada">
+    }
 
-        @if(@Model.IntervaloSaida != null){
-            <input type="datetime-local" name="IntervaloSaida" value="@Model.IntervaloSaida" required>
-        }else{
-            <input type="datetime-local" name="IntervaloSaida" value="@Model.IntervaloSaida" required>
-        }
+    <label>Saida do Intervalo</label>
+    @if(@Model.IntervaloSaida != null){
+        <input type="datetime-local" name="IntervaloSaida" value="@intervaloSaida">
+    }else{
+        <input type="datetime-local" name="IntervaloSaida">
+    }
 
-        @if(@Model.Saida != null){
-            <input type="datetime-local" name="Saida" value="@Model.Saida" required>
-        }else{
-            <input type="datetime-local" name="Saida" value="@Model.Saida" required>
-        }
+    <label>Saida</label>
 
-        <input value="Enviar" type="submit">
+    @if(@Model.Saida != null){
+        <input type="datetime-local" name="Saida" value="@saida">
+    }else{
+        <input type="datetime-local" name="Saida">
+    }
+
+    <input value="Enviar" type="submit">
 </form>

@@ -7,12 +7,14 @@ namespace SistemaDePonto.Interfaces
 {
     interface IFuncionarioRepository
     {
-        public List<Funcionarios> Listar();
-        public Funcionarios BuscarPorID(int id);
-        public void Cadastrar(Funcionarios funcionario);
-        public Funcionarios Login(string email, string senha);
-        public List<DiasDeTrabalho> ObterDiasDeTrabalho(int idFuncionario);
-        public DiasDeTrabalho ObterDiaDeTrabalho(int idFuncionario, int idDia);
+        List<Funcionarios> Listar();
+        Funcionarios BuscarPorID(int id);
+        void Cadastrar(Funcionarios funcionario);
+        Funcionarios Login(string email, string senha);
+        List<DiasDeTrabalho> ObterDiasDeTrabalho(int idFuncionario);
+        DiasDeTrabalho ObterDiaDeTrabalho(int idFuncionario, int idDia);
+
+        void atualizarDiaDeTrabalho(DiasDeTrabalho diaAtualizado);
         
     }
 }
