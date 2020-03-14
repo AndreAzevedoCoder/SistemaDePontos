@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using SistemaDePonto.Domain;
+using SistemaDePonto.Domains;
 
 namespace PontoMVC.ViewModel
 {

@@ -36,5 +36,12 @@
             <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
             <input class="BotaoNormal" type="submit" value="Editar">
         </form>
+        <form method="POST" action='@Url.Action("DeletarDiaDeTrabalho", "Funcionario")'>
+            <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
+            <input class="BotaoNormal" type="submit" value="Deletar">
+        </form>
     </div>
 }
+<form method="POST" action='@Url.Action("AdicionarDiaDeTrabalho", "Funcionario")'>
+    <input class="BotaoNormal" type="submit" value="Adicionar">
+</form>

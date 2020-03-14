@@ -10,7 +10,7 @@ using SistemaDePonto.Interfaces;
 using SistemaDePonto.Repositories;
 using Microsoft.AspNetCore.Http;
 using PontoMVC.Controllers;
-using SistemaDePonto.Domain;
+using SistemaDePonto.Domains;
 
 namespace SistemaDePonto.Controllers
 {

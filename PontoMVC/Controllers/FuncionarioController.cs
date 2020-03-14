@@ -11,7 +11,7 @@ using SistemaDePonto.Repositories;
 using PontoMVC.Controllers;
 using PontoMVC.ViewModel;
 using Microsoft.AspNetCore.Http;
-using SistemaDePonto.Domain;
+using SistemaDePonto.Domains;
 
 namespace SistemaDePonto.Controllers
 {
@@ -44,12 +44,16 @@ namespace SistemaDePonto.Controllers
         [HttpPost]
         public IActionResult EditorDeDiaDeTrabalho(IFormCollection form){
 
-            DiasDeTrabalho dia = _funcionarioRepository.ObterDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()), Int32.Parse(form["idDia"]));
+            DiasDeTrabalho dia = _funcionarioRepository.ObterDiaDeTrabalho(Int32.Parse(form["idDia"]));
             DiaDeTrabalhoViewModel diaDeTrabalhoViewModel = new DiaDeTrabalhoViewModel();
 
             
             diaDeTrabalhoViewModel.IdDia = dia.IdDia;
-            diaDeTrabalhoViewModel.Entrada = DateTime.Parse(dia.Entrada.ToString());
+            
+            if(dia.Entrada.ToString() != ""){
+                diaDeTrabalhoViewModel.Entrada = DateTime.Parse(dia.Entrada.ToString());
+            }
+
             if(dia.IntervaloEntrada.ToString() != ""){
                 diaDeTrabalhoViewModel.IntervaloEntrada = DateTime.Parse(dia.IntervaloEntrada.ToString());
             }
@@ -57,11 +61,19 @@ namespace SistemaDePonto.Controllers
             if(dia.IntervaloSaida.ToString() != ""){
                 diaDeTrabalhoViewModel.IntervaloSaida = DateTime.Parse(dia.IntervaloSaida.ToString());
             }
-            
-            diaDeTrabalhoViewModel.Saida = DateTime.Parse(dia.Saida.ToString());
-            
+
+            if(dia.Saida.ToString() != ""){
+                diaDeTrabalhoViewModel.Saida = DateTime.Parse(dia.Saida.ToString());
+            }        
             
             return View("EditorDeDiaDeTrabalho",diaDeTrabalhoViewModel);
+        }
+
+        [HttpPost]
+
+        public IActionResult DeletarDiaDeTrabalho(IFormCollection form){
+            _funcionarioRepository.DeletarDiaDeTrabalho(Int32.Parse(form["idDia"].ToString()));
+            return Dashboard();
         }
 
         [HttpPost]
@@ -80,8 +92,14 @@ namespace SistemaDePonto.Controllers
             return Dashboard();
         }
 
+        [HttpPost]
+        public IActionResult AdicionarDiaDeTrabalho(){
+            _funcionarioRepository.adicionarDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()));
+            return Dashboard();
+        }
+
         DateTime dateTimeParse(string dateTimeLocal){
-            if(dateTimeLocal.Length > 13){
+            if(dateTimeLocal.Length > 13 && dateTimeLocal != "1-01-01T00:00" ){
                 int ano = Int32.Parse(dateTimeLocal.Substring(0,4));
 
                 int mes = Int32.Parse(dateTimeLocal.Substring(5,2));

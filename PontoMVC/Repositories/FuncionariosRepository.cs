@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SistemaDePonto.Interfaces;
-using SistemaDePonto.Domain;
+using SistemaDePonto.Domains;
 using SistemaDePonto.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
@@ -12,7 +12,7 @@ namespace SistemaDePonto.Repositories
 {
     public class FuncionariosRepository : IFuncionarioRepository
     {
-        pontosContext ctx = new pontosContext();
+        sistemaDePontosContext ctx = new sistemaDePontosContext();
         public List<Funcionarios> Listar(){
             return ctx.Funcionarios.ToList();
         }
@@ -21,7 +21,7 @@ namespace SistemaDePonto.Repositories
         }
         public void Cadastrar(Funcionarios funcionario)
         {
-            
+
         }
         /// <summary>
         /// Busca um usuario por email e senha 
@@ -40,9 +40,9 @@ namespace SistemaDePonto.Repositories
             return ctx.DiasDeTrabalho.Where(b => b.IdFuncionario == idFuncionario).ToList();
         }
 
-        public DiasDeTrabalho ObterDiaDeTrabalho(int idFuncionario, int idDia)
+        public DiasDeTrabalho ObterDiaDeTrabalho( int idDia)
         {
-            return ctx.DiasDeTrabalho.Where(b => b.IdFuncionario == idFuncionario && b.IdDia == idDia).FirstOrDefault();
+            return ctx.DiasDeTrabalho.Where(b => b.IdDia == idDia).FirstOrDefault();
         }
 
         public void atualizarDiaDeTrabalho(DiasDeTrabalho diaAtualizado){
@@ -64,7 +64,19 @@ namespace SistemaDePonto.Repositories
                 diaAntigo.Saida = diaAtualizado.Saida;
             }
 
-            Console.WriteLine(diaAntigo.IntervaloEntrada);
+            ctx.SaveChanges();
+        }
+
+        public void DeletarDiaDeTrabalho(int id){
+            ctx.DiasDeTrabalho.Remove(ObterDiaDeTrabalho(id));
+            ctx.SaveChanges();
+        }
+
+        public void adicionarDiaDeTrabalho(int idFuncionario){
+            DiasDeTrabalho diasDeTrabalho = new DiasDeTrabalho();
+            diasDeTrabalho.Entrada = DateTime.Now;
+            diasDeTrabalho.IdFuncionario = idFuncionario;
+            ctx.DiasDeTrabalho.Add(diasDeTrabalho);
             ctx.SaveChanges();
         }
 
