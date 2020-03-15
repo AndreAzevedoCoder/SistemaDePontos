@@ -11,6 +11,8 @@ namespace SistemaDePonto.Interfaces
         Funcionarios BuscarPorID(int id);
         Funcionarios Login(string email, string senha);
         List<DiasDeTrabalho> ObterDiasDeTrabalho(int idFuncionario);
+
+        int Cadastrar(string nome, string email, string senha);
         DiasDeTrabalho ObterDiaDeTrabalho(int idDia);
         void atualizarDiaDeTrabalho(DiasDeTrabalho diaAtualizado);
         void DeletarDiaDeTrabalho(int id);

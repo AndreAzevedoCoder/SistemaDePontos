@@ -25,10 +25,10 @@ namespace SistemaDePonto.Repositories
                 if(diaDeTrabalho.Saida != null){
                     DateTime diaDeHojeSaida = DateTime.Parse(diaDeTrabalho.Saida.ToString());
                     if(diaDeHojeEntrada.Day == dia){
-                        horasTrabalhadas[0] += diaDeHojeSaida.Hour - diaDeHojeEntrada.Hour;
+                        horasTrabalhadas[0] += (diaDeHojeSaida.Day - diaDeHojeEntrada.Day ) * 24 + diaDeHojeSaida.Hour - diaDeHojeEntrada.Hour;
                     }
                     if(diaDeHojeEntrada.Month == mes){
-                        horasTrabalhadas[1] += diaDeHojeSaida.Hour - diaDeHojeEntrada.Hour;
+                        horasTrabalhadas[1] += (diaDeHojeSaida.Day - diaDeHojeEntrada.Day ) * 24 + diaDeHojeSaida.Hour - diaDeHojeEntrada.Hour;
                     }
                 }
             }
@@ -37,6 +37,10 @@ namespace SistemaDePonto.Repositories
 
         public Funcionarios BuscarPorID(int id){
             return ctx.Funcionarios.FirstOrDefault(f => f.IdFuncionario == id);
+        }
+
+        public int BuscarPorEmail(string Email){
+            return ctx.Funcionarios.FirstOrDefault(f => f.Email == Email).IdFuncionario;
         }
 
         /// <summary>
@@ -119,5 +123,16 @@ namespace SistemaDePonto.Repositories
             ctx.SaveChanges();
         }
 
+        public int Cadastrar(string nome, string email, string senha)
+        {
+            Funcionarios novoFuncionario = new Funcionarios{
+                Nome = nome,
+                Email = email,
+                Senha = senha
+            };
+            ctx.Funcionarios.Add(novoFuncionario);
+            ctx.SaveChanges();
+            return BuscarPorEmail(email);
+        }
     }
 }

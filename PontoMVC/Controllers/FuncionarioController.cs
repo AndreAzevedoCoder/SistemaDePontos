@@ -74,6 +74,7 @@ namespace SistemaDePonto.Controllers
             return View("EditorDeDiaDeTrabalho",diaDeTrabalhoViewModel);
         }
 
+        
         [HttpPost]
 
         public IActionResult DeletarDiaDeTrabalho(IFormCollection form){

@@ -1,0 +1,34 @@
+<div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+        <main>
+                <div class="container">
+                <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Cadastrar-se</h3></div>
+                                <div class="card-body">
+                                <form method="POST" action='@Url.Action("Cadastrar", "Home")' required>
+                                        <div class="form-group"><label class="small mb-1" >Digite o seu nome: </label><input type="text" name="Nome"></div>
+                                        <div class="form-group"><label class="small mb-1" >Digite o email: </label><input type="email" name="Email"></div>
+                                        <div class="form-group"><label class="small mb-1" >Digite a senha: </label><input type="password" name="Senha"></div>
+                                        <div class="form-group"><label class="small mb-1" >Digite a senha novamente: </label><input type="password" name="SenhaNovamente"></div>
+                                        
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary" value="Cadastrar"/>
+                                        </div>
+                                </form>
+                                
+                                </div>
+                                <div class="card-footer text-center">
+                                <div class="small"><form method="POST" action='@Url.Action("Index", "Home")'>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-info" value="Voltar"/>
+                                    </div>
+                                </form></div>
+                                </div>
+                        </div>
+                        </div>
+                </div>
+                </div>
+        </main>
+</div>
