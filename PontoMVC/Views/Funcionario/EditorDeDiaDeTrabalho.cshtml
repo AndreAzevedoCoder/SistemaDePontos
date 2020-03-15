@@ -15,38 +15,38 @@
     string intervaloSaida = RetornarStringDateTime(@Model.IntervaloSaida);
     string saida = RetornarStringDateTime(@Model.Saida);
 }
-
- <form method="POST" action='@Url.Action("EditarDiaDeTrabalho", "Funcionario")' required>
-    <input type="hidden" name="ID" value="@Model.IdDia">
-    <label>Entrada</label>
-    @if(@Model.Entrada != null){
-        <input type="datetime-local" name="Entrada" value="@entrada">
-    }else{
-        
-        <input type="datetime-local" name="Entrada">
-    }
-
-    <label>Entrada do Intervalo</label>
-    @if(@Model.IntervaloEntrada != null){
-        <input type="datetime-local" name="IntervaloEntrada" value="@intervaloEntrada">
-    }else{
-        <input type="datetime-local" name="IntervaloEntrada">
-    }
-
-    <label>Saida do Intervalo</label>
-    @if(@Model.IntervaloSaida != null){
-        <input type="datetime-local" name="IntervaloSaida" value="@intervaloSaida">
-    }else{
-        <input type="datetime-local" name="IntervaloSaida">
-    }
-
-    <label>Saida</label>
-
-    @if(@Model.Saida != null){
-        <input type="datetime-local" name="Saida" value="@saida">
-    }else{
-        <input type="datetime-local" name="Saida">
-    }
-
-    <input value="Enviar" type="submit">
-</form>
+<div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+        <main>
+                <div class="container">
+                <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar ponto</h3></div>
+                                <div class="card-body">
+                                <form method="POST" action='@Url.Action("EditarDiaDeTrabalho", "Funcionario")' required>
+                                    <input type="hidden" name="ID" value="@Model.IdDia">
+                                        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Entrada</label>@if(@Model.Entrada != null){<input type="datetime-local" min="@entrada" name="Entrada" value="@entrada">}else{<input type="datetime-local" min="@entrada" name="Entrada">}</div>
+                                        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Entrada do Intervalo</label>@if(@Model.IntervaloEntrada != null){<input type="datetime-local" min="@entrada" name="IntervaloEntrada" value="@intervaloEntrada">}else{<input type="datetime-local" min="@entrada" name="IntervaloEntrada">}</div>
+                                        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Saida do Intervalo</label>@if(@Model.IntervaloSaida != null){<input type="datetime-local" min="@intervaloEntrada" name="IntervaloSaida" value="@intervaloSaida">}else{<input type="datetime-local" min="@entrada" name="IntervaloSaida">}</div>
+                                        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Saida</label>@if(@Model.Saida != null){<input type="datetime-local" min="@intervaloSaida" name="Saida" value="@saida">}else{<input type="datetime-local" min="@entrada" name="Saida">}</div>
+                                        
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary" value="Editar"/>
+                                        </div>
+                                </form>
+                                
+                                </div>
+                                <div class="card-footer text-center">
+                                <div class="small"><form method="POST" action='@Url.Action("Dashboard", "Funcionario")'>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-info" value="Voltar"/>
+                                    </div>
+                                </form></div>
+                                </div>
+                        </div>
+                        </div>
+                </div>
+                </div>
+        </main>
+</div>

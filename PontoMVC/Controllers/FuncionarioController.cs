@@ -21,11 +21,12 @@ namespace SistemaDePonto.Controllers
 
         private readonly ILogger<HomeController> _logger;
 
-        public FuncionarioController(ILogger<HomeController> logger)
+        public FuncionarioController(ILogger<HomeController> logger )
         {
             _funcionarioRepository = new FuncionariosRepository();
             _logger = logger;
         }
+
 
         public IActionResult Dashboard()
         {
@@ -33,10 +34,14 @@ namespace SistemaDePonto.Controllers
                 case "":
                     return RedirectToAction("Index","Home");
                 default:
+                    int[] HorasTrabalhadas = _funcionarioRepository.HorasTrabalhadas(Int32.Parse(ObterIDUsuarioSession()),DateTime.Today.Day,DateTime.Today.Month);
                     FuncionarioViewModel funcionarioViewModel = new FuncionarioViewModel{
                         Nome = ObterUsuarioNomeSession(),
-                        DiasDeTrabalho = _funcionarioRepository.ObterDiasDeTrabalho(Int32.Parse(ObterIDUsuarioSession()))
+                        DiasDeTrabalho = _funcionarioRepository.ObterDiasDeTrabalho(Int32.Parse(ObterIDUsuarioSession())),
+                        HorasTrabalhadasHoje = HorasTrabalhadas[0],
+                        HorasTotaisDoMes = HorasTrabalhadas[1]
                     };
+                   
                     return View("Dashboard",funcionarioViewModel);
             }
         }
@@ -94,7 +99,10 @@ namespace SistemaDePonto.Controllers
 
         [HttpPost]
         public IActionResult AdicionarDiaDeTrabalho(){
-            _funcionarioRepository.adicionarDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()));
+
+            //HttpContext.Connection.RemoteIpAddress.ToString();
+            _funcionarioRepository.adicionarDiaDeTrabalho(Int32.Parse(ObterIDUsuarioSession()), HttpContext.Connection.RemoteIpAddress.ToString());
+            
             return Dashboard();
         }
 

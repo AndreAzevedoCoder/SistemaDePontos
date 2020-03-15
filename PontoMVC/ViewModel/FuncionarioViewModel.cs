@@ -10,5 +10,7 @@ namespace PontoMVC.ViewModel
 
         //Caso necessite ver apenas um dia de trabalho
         public DiasDeTrabalho DiaDeTrabalho {get;set;}
+        public int HorasTrabalhadasHoje {get;set;}
+        public int HorasTotaisDoMes {get;set;}
     }
 }

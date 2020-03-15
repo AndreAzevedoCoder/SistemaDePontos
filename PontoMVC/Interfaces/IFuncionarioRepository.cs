@@ -9,13 +9,13 @@ namespace SistemaDePonto.Interfaces
     {
         List<Funcionarios> Listar();
         Funcionarios BuscarPorID(int id);
-        void Cadastrar(Funcionarios funcionario);
         Funcionarios Login(string email, string senha);
         List<DiasDeTrabalho> ObterDiasDeTrabalho(int idFuncionario);
         DiasDeTrabalho ObterDiaDeTrabalho(int idDia);
         void atualizarDiaDeTrabalho(DiasDeTrabalho diaAtualizado);
         void DeletarDiaDeTrabalho(int id);
-        void adicionarDiaDeTrabalho(int idFuncionario);
+        void adicionarDiaDeTrabalho(int idFuncionario, string ip);
+        int[] HorasTrabalhadas(int idFuncionario, int dia, int mes);
         
     }
 }

@@ -14389,11 +14389,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/Views/Login/Index.cshtml",
-      "TargetPath": "Views\\Login\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/pc/Documentos/Intelitrader/SistemaDePonto/PontoMVC/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

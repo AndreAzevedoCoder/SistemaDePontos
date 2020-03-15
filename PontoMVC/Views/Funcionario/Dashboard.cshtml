@@ -1,47 +1,87 @@
 ﻿@model PontoMVC.ViewModel.FuncionarioViewModel
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Bem-Vindo! @Model.Nome</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Entrada</th>
+                        <th>Entrada do Intervalo</th>
+                        <th>Saida do Intervalo</th>
+                        <th>Saida</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Entrada</th>
+                        <th>Entrada do Intervalo</th>
+                        <th>Saida do Intervalo</th>
+                        <th>Saida</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                @foreach (var diaDeTrabalho in @Model.DiasDeTrabalho)
+                {
+                    <tr>
 
-<p>Bem-Vindo! @Model.Nome</p>
+                        @if(diaDeTrabalho.Entrada != null  && diaDeTrabalho.Entrada.ToString() != "01/01/0001 00:00:00"){
+                            <td>@diaDeTrabalho.Entrada</td>
+                        }else{
+                            <td>Pendente</td>
+                        }
 
-@foreach (var diaDeTrabalho in @Model.DiasDeTrabalho)
-{
-    <div class="DiaDeTrabalho">
-        <p>@diaDeTrabalho.IdDia</p>
+                        @if(diaDeTrabalho.IntervaloEntrada != null && diaDeTrabalho.IntervaloEntrada.ToString() != "01/01/0001 00:00:00"){
+                            <td>@diaDeTrabalho.IntervaloEntrada</td>
+                        }else{
+                            <td>Pendente</td>
+                        }
 
-        @if(diaDeTrabalho.Entrada != null){
-            <p>Entrada: @diaDeTrabalho.Entrada</p>
-        }else{
-            <p>Entrada: Pendente</p>
-        }
+                        @if(diaDeTrabalho.IntervaloSaida != null  && diaDeTrabalho.IntervaloSaida.ToString() != "01/01/0001 00:00:00"){
+                            <td>@diaDeTrabalho.IntervaloSaida</td>
+                        }else{
+                            <td>Pendente</td>
+                        }
 
-
-        @if(diaDeTrabalho.IntervaloEntrada != null){
-            <p>Entrada do Intervalo: @diaDeTrabalho.IntervaloEntrada</p>
-        }else{
-            <p>Entrada do Intervalo: Pendente</p>
-        }
-
-        @if(diaDeTrabalho.IntervaloSaida != null){
-            <p>Saida do Intervalo: @diaDeTrabalho.IntervaloSaida</p>
-        }else{
-            <p>Saida do Intervalo: Pendente</p>
-        }
-
-        @if(diaDeTrabalho.Saida != null){
-            <p>Saida: @diaDeTrabalho.Saida</p>
-        }else{
-            <p>Saida: Saida</p>
-        }
-
-        <form method="POST" action='@Url.Action("EditorDeDiaDeTrabalho", "Funcionario")'>
-            <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
-            <input class="BotaoNormal" type="submit" value="Editar">
-        </form>
-        <form method="POST" action='@Url.Action("DeletarDiaDeTrabalho", "Funcionario")'>
-            <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
-            <input class="BotaoNormal" type="submit" value="Deletar">
-        </form>
+                        @if(diaDeTrabalho.Saida != null  && diaDeTrabalho.Saida.ToString() != "01/01/0001 00:00:00"){
+                            <td>@diaDeTrabalho.Saida</td>
+                        }else{
+                            <td>Pendente</td>
+                        }
+                        <td>
+                            <form method="POST" action='@Url.Action("EditorDeDiaDeTrabalho", "Funcionario")'>
+                                <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
+                                <input type="submit" class="btn btn-primary" value="Editar">
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action='@Url.Action("DeletarDiaDeTrabalho", "Funcionario")'>
+                                <input type="hidden" name="idDia" value=@diaDeTrabalho.IdDia>
+                                <input type="submit" class="btn btn-danger" value="Deletar">
+                            </form>
+                        </td>
+                    </tr>
+                }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-}
-<form method="POST" action='@Url.Action("AdicionarDiaDeTrabalho", "Funcionario")'>
-    <input class="BotaoNormal" type="submit" value="Adicionar">
-</form>
+</div>
+
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+        
+        <div class="d-flex align-items-center justify-content-between small">
+            <p>Horas trabalhadas hoje: @Model.HorasTrabalhadasHoje</p>
+             <form method="POST" action='@Url.Action("AdicionarDiaDeTrabalho", "Funcionario")'>
+                <input class="btn btn-dark" type="submit" value="Adicionar">
+            </form>
+            <p>Horas trabalhadas este mes: @Model.HorasTotaisDoMes</p>
+        </div>
+    </div>
+</footer>
