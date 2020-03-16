@@ -12,3 +12,21 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
 https://docs.microsoft.com/pt-br/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli
 
 Scaffold-DbContext "Data Source=DESKTOP-GCOFA7F\SQLEXPRESS; Initial Catalog=InLock_Games; user Id=sa; pwd=sa@132;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context InLockContext
+
+sqlcmd -S localhost -U SA -P 'database@132'
+sqlcmd -S localhost -U SA -P 'database@132' -i DML.sql 
+
+dotnet ef dbcontext scaffold "Server=localhost;User Id=SA;Password=database@132;Database=sistemaDePontos;" Microsoft.EntityFrameworkCore.SqlServer -force
+
+dotnet ef dbcontext scaffold "Data Source=localhost; Initial Catalog=sistemaDePontos; user Id=SA; pwd=sa@132;" Microsoft.EntityFrameworkCore.SqlServer -force
+
+
+
+dotnet ef dbcontext scaffold "Server=localhost;User Id=SA;Password=database@132;Database=sistemaDePontos;"
+
+
+docker exec -i sqlserver-container sqlserver -uroot < BD/DDL.sql 
+
+docker exec -it sqlserver-container /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Database@132
+docker exec -it sqlserver-container bin/bash
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Database@132'

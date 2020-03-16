@@ -1,0 +1,13 @@
+mcr.microsoft.com/mssql/server:
+  build: .
+  ports:
+    - "5005:5005"
+    - "5006:5006"
+  volumes:
+    - ./scripts:/home/scripts
+  environment:
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=Database@132
+
+microsoft/aspnetcore:
+  
